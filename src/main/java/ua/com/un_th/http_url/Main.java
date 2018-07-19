@@ -5,8 +5,8 @@ public class Main {
         try {
             HttpUrlConnect huc = new HttpUrlConnect();
             String urlParameters  = "requestType=sale" +
-                    "&userName=myUsername" +
-                    "&password=myP%40ssword" +
+                    "&userName=test_api_user" +
+                    "&password=C8v20gAdHjig3LMRWGhm5PK1G00v08V1" +
                     "&accountId=2001&amount=5000" +
                     "&accountType=R" +
                     "&transactionIndustryType=RE" +
@@ -24,6 +24,7 @@ public class Main {
             String body = huc.post(postUrl, urlParameters);
 
             System.out.println(body);
+
 
         } catch (Exception ex) {
             ex.printStackTrace();
