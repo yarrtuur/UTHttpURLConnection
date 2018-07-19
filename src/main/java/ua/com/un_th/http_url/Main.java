@@ -3,7 +3,7 @@ package ua.com.un_th.http_url;
 public class Main {
     public static void main(String[] args) {
         try {
-            HttpUrlConnect huc = new HttpUrlConnect();
+            HttpUrlRequest huc = new HttpUrlRequest();
             String urlParameters  = "requestType=sale" +
                     "&userName=test_api_user" +
                     "&password=C8v20gAdHjig3LMRWGhm5PK1G00v08V1" +
@@ -21,9 +21,7 @@ public class Main {
                     "&customerAccountCode=0000000001" +
                     "&transactionCode=0000000001";
             String postUrl = "https://sandbox-secure.unitedthinkers.com/gates/xurl";
-            String body = huc.post(postUrl, urlParameters);
-
-            System.out.println(body);
+            huc.post(postUrl, urlParameters);
 
 
         } catch (Exception ex) {

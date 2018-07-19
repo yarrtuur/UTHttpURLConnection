@@ -5,13 +5,16 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public class HttpUrlConnect {
+public class HttpUrlRequest {
     URL myUrl;
     HttpURLConnection myUrlCon;
    // String userName = "test_api_user", password = "C8v20gAdHjig3LMRWGhm5PK1G00v08V1";
 
-    public String post(String postUrl, String urlParameters) throws Exception {
+    public void post(String postUrl, String urlParameters) throws Exception {
         byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
         int postDataLength = postData.length;
 
@@ -25,8 +28,8 @@ public class HttpUrlConnect {
         myUrlCon.setRequestProperty("Content-Length", Integer.toString(postDataLength));
 
         myUrlCon.setUseCaches(false);
-        this.sendData(myUrlCon, postData);
-        return this.read(myUrlCon.getInputStream());
+        sendData(myUrlCon, postData);
+        read(myUrlCon);
     }
 
     protected void sendData(HttpURLConnection con, byte[] postData) throws IOException {
@@ -38,15 +41,15 @@ public class HttpUrlConnect {
         }
     }
 
-    private String read(InputStream is) throws IOException {
-        StringBuilder body = new StringBuilder();
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
-            while (reader.ready()) {
-                body.append(reader.readLine());
-            }
-            return body.toString();
-        } catch (Exception ex) {
-            throw ex;
+    private void read(HttpURLConnection myUrlCon) throws IOException {
+        Map<String, List<String>> myMap = myUrlCon.getHeaderFields();
+        Set<String> myField = myMap.keySet();
+        System.out.println("\nДалее следует заголовок:");
+
+        // Вывести все ключи и значения из заголовка
+        for(String k : myField) {
+            System.out.println("Ключ: " + k + " Значение: "
+                    + myMap.get(k));
         }
     }
 
