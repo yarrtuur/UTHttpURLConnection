@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         try {
             HttpUrlRequest huc = new HttpUrlRequest();
+            //todo read from excel & properties
             String urlParameters  = "requestType=sale" +
                     "&userName=test_api_user" +
                     "&password=C8v20gAdHjig3LMRWGhm5PK1G00v08V1" +
@@ -21,7 +22,7 @@ public class Main {
                     "&customerAccountCode=0000000001" +
                     "&transactionCode=0000000001";
             String postUrl = "https://sandbox-secure.unitedthinkers.com/gates/xurl";
-            huc.post(postUrl, urlParameters);
+            System.out.println(huc.postRequest(postUrl, urlParameters).toString());
 
 
         } catch (Exception ex) {
