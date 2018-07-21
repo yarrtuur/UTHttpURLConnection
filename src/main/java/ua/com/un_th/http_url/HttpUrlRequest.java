@@ -6,6 +6,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class HttpUrlRequest {
@@ -60,7 +61,7 @@ public class HttpUrlRequest {
 
     private Map<String, String> makeResponseMap(String responseLine) {
         String[] divideResponse = responseLine.split("\\&");
-        Map<String, String> responseMap = new HashMap<>();
+        Map<String, String> responseMap = new LinkedHashMap<>();
         for(String step : divideResponse) {
             String[] divStep = step.split("=");
             if(divStep.length > 1) {
