@@ -1,8 +1,8 @@
 package ua.com.un_th.http_url.data_containers;
 
 import ua.com.un_th.http_url.ExitException;
-import ua.com.un_th.http_url.HttpUrlRequest;
-import ua.com.un_th.http_url.LoadRequestParams;
+import ua.com.un_th.http_url.utils.HttpUrlRequest;
+import ua.com.un_th.http_url.utils.LoadRequestParams;
 
 import java.util.Collection;
 import java.util.LinkedHashMap;

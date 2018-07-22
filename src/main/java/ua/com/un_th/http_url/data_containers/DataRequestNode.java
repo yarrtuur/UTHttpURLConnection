@@ -5,35 +5,35 @@ import com.ebay.xcelite.annotations.Column;
 import java.util.Objects;
 
 public class DataRequestNode {
-	@Column(name="requestType")
+	@Column(name = "requestType")
 	private String requestType;
-	@Column(name="accountId")
+	@Column(name = "accountId")
 	private String accountId;
-	@Column(name="amount")
+	@Column(name = "amount")
 	private String amount;
-	@Column(name="accountType")
+	@Column(name = "accountType")
 	private String accountType;
-	@Column(name="transactionIndustryType")
+	@Column(name = "transactionIndustryType")
 	private String transactionIndustryType;
-	@Column(name="holderType")
+	@Column(name = "holderType")
 	private String holderType;
-	@Column(name="holderName")
+	@Column(name = "holderName")
 	private String holderName;
-	@Column(name="accountNumber")
+	@Column(name = "accountNumber")
 	private String accountNumber;
-	@Column(name="accountAccessory")
+	@Column(name = "accountAccessory")
 	private String accountAccessory;
-	@Column(name="street")
+	@Column(name = "street")
 	private String street;
-	@Column(name="city;")
+	@Column(name = "city;")
 	private String city;
-	@Column(name="state")
+	@Column(name = "state")
 	private String state;
-	@Column(name="zipCode")
+	@Column(name = "zipCode")
 	private String zipCode;
-	@Column(name="customerAccountCode")
+	@Column(name = "customerAccountCode")
 	private String customerAccountCode;
-	@Column(name="transactionCode")
+	@Column(name = "transactionCode")
 	private String transactionCode;
 
 	public String getRequestType() {

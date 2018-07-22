@@ -1,4 +1,6 @@
-package ua.com.un_th.http_url;
+package ua.com.un_th.http_url.utils;
+
+import ua.com.un_th.http_url.ExitException;
 
 import java.io.*;
 import java.net.HttpURLConnection;

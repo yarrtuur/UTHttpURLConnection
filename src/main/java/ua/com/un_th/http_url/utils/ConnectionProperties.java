@@ -1,4 +1,6 @@
-package ua.com.un_th.http_url;
+package ua.com.un_th.http_url.utils;
+
+import ua.com.un_th.http_url.ExitException;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -6,8 +8,8 @@ import java.util.Properties;
 
 public final class ConnectionProperties {
 
-	private Properties connProperties = new Properties();
 	private static final String CONFIG_SQLCMD_PROPERTIES = "connect.properties";
+	private Properties connProperties = new Properties();
 
 	public ConnectionProperties() throws ExitException {
 		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
@@ -31,8 +33,6 @@ public final class ConnectionProperties {
 	public String getConnUrlConnect() {
 		return connProperties.getProperty("urlConnect");
 	}
-
-
 
 
 }
