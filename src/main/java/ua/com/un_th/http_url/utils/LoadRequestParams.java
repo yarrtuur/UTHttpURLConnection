@@ -10,38 +10,39 @@ import java.io.File;
 import java.util.Collection;
 
 public class LoadRequestParams {
-	private static final String CONFIG_REQUEST_DATA = "requestFile.xlsx";
-	private ConnectionProperties connectionProperties;
-	private Collection<DataRequestNode> requestList;
+    private static final String CONFIG_REQUEST_DATA = "requestFile.xlsx";
+    private ConnectionProperties connectionProperties;
+    private Collection<DataRequestNode> requestList;
 
-	public LoadRequestParams() throws ExitException {
-		connectionProperties = new ConnectionProperties();
-		getRequestData();
-	}
+    public LoadRequestParams() throws ExitException {
+        connectionProperties = new ConnectionProperties();
+        getRequestData();
+    }
 
-	private void getRequestData() throws ExitException {
-		ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-		try {
-			Xcelite xcelite = new Xcelite(new File(classloader.getResource(CONFIG_REQUEST_DATA).getPath()));
-			XceliteSheet sheet = xcelite.getSheet("request");
-			SheetReader<DataRequestNode> reader = sheet.getBeanReader(DataRequestNode.class);
-			requestList = reader.read();
-		} catch (Exception e) {
-			throw new ExitException("No file requestFile.xlsx found in " + e.getMessage());
-		}
-	}
+    private void getRequestData() throws ExitException {
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
-	public Collection<DataRequestNode> getRequestList() {
-		return requestList;
-	}
+        try {
+            Xcelite xcelite = new Xcelite(new File(classloader.getResource(CONFIG_REQUEST_DATA).getFile()));
+            XceliteSheet sheet = xcelite.getSheet("request");
+            SheetReader<DataRequestNode> reader = sheet.getBeanReader(DataRequestNode.class);
+            requestList = reader.read();
+        } catch (Exception e) {
+            throw new ExitException("No file " + CONFIG_REQUEST_DATA + " found in " + e.getMessage());
+        }
+    }
 
-	public String getUrlConnect() {
-		return connectionProperties.getConnUrlConnect();
-	}
+    public Collection<DataRequestNode> getRequestList() {
+        return requestList;
+    }
 
-	public String getUserNameAndPasswd() {
-		StringBuilder sb = new StringBuilder();
-		return sb.append("&userName=").append(connectionProperties.getConnUserName())
-				.append("&password=").append(connectionProperties.getConnPasswd()).toString();
-	}
+    public String getUrlConnect() {
+        return connectionProperties.getConnUrlConnect();
+    }
+
+    public String getUserNameAndPasswd() {
+        StringBuilder sb = new StringBuilder();
+        return sb.append("&userName=").append(connectionProperties.getConnUserName())
+                .append("&password=").append(connectionProperties.getConnPasswd()).toString();
+    }
 }
