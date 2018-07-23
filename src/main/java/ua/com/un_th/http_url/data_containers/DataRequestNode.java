@@ -35,6 +35,12 @@ public class DataRequestNode {
 	private String customerAccountCode;
 	@Column(name = "transactionCode")
 	private String transactionCode;
+	@Column(name = "accountData")
+	private String accountData;
+	@Column(name = "csc")
+	private String csc;
+	@Column(name = "splits")
+	private String splits;
 
 	public String getRequestType() {
 		return requestType;
@@ -96,6 +102,49 @@ public class DataRequestNode {
 		return transactionCode;
 	}
 
+	public String getAccountData() {
+		return accountData;
+	}
+
+	public String getCsc() {
+		return csc;
+	}
+
+	public String getSplits() {
+		return splits;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		DataRequestNode that = (DataRequestNode) o;
+		return Objects.equals(requestType, that.requestType) &&
+				Objects.equals(accountId, that.accountId) &&
+				Objects.equals(amount, that.amount) &&
+				Objects.equals(accountType, that.accountType) &&
+				Objects.equals(transactionIndustryType, that.transactionIndustryType) &&
+				Objects.equals(holderType, that.holderType) &&
+				Objects.equals(holderName, that.holderName) &&
+				Objects.equals(accountNumber, that.accountNumber) &&
+				Objects.equals(accountAccessory, that.accountAccessory) &&
+				Objects.equals(street, that.street) &&
+				Objects.equals(city, that.city) &&
+				Objects.equals(state, that.state) &&
+				Objects.equals(zipCode, that.zipCode) &&
+				Objects.equals(customerAccountCode, that.customerAccountCode) &&
+				Objects.equals(transactionCode, that.transactionCode) &&
+				Objects.equals(accountData, that.accountData) &&
+				Objects.equals(csc, that.csc) &&
+				Objects.equals(splits, that.splits);
+	}
+
+	@Override
+	public int hashCode() {
+
+		return Objects.hash(requestType, accountId, amount, accountType, transactionIndustryType, holderType, holderName, accountNumber, accountAccessory, street, city, state, zipCode, customerAccountCode, transactionCode, accountData, csc, splits);
+	}
+
 	@Override
 	public String toString() {
 		return "DataRequestNode{" +
@@ -114,34 +163,9 @@ public class DataRequestNode {
 				", zipCode='" + zipCode + '\'' +
 				", customerAccountCode='" + customerAccountCode + '\'' +
 				", transactionCode='" + transactionCode + '\'' +
+				", accountData='" + accountData + '\'' +
+				", csc='" + csc + '\'' +
+				", splits='" + splits + '\'' +
 				'}';
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-		DataRequestNode dataRequestNode = (DataRequestNode) o;
-		return Objects.equals(requestType, dataRequestNode.requestType) &&
-				Objects.equals(accountId, dataRequestNode.accountId) &&
-				Objects.equals(amount, dataRequestNode.amount) &&
-				Objects.equals(accountType, dataRequestNode.accountType) &&
-				Objects.equals(transactionIndustryType, dataRequestNode.transactionIndustryType) &&
-				Objects.equals(holderType, dataRequestNode.holderType) &&
-				Objects.equals(holderName, dataRequestNode.holderName) &&
-				Objects.equals(accountNumber, dataRequestNode.accountNumber) &&
-				Objects.equals(accountAccessory, dataRequestNode.accountAccessory) &&
-				Objects.equals(street, dataRequestNode.street) &&
-				Objects.equals(city, dataRequestNode.city) &&
-				Objects.equals(state, dataRequestNode.state) &&
-				Objects.equals(zipCode, dataRequestNode.zipCode) &&
-				Objects.equals(customerAccountCode, dataRequestNode.customerAccountCode) &&
-				Objects.equals(transactionCode, dataRequestNode.transactionCode);
-	}
-
-	@Override
-	public int hashCode() {
-
-		return Objects.hash(requestType, accountId, amount, accountType, transactionIndustryType, holderType, holderName, accountNumber, accountAccessory, street, city, state, zipCode, customerAccountCode, transactionCode);
 	}
 }

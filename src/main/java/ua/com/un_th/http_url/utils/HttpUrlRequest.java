@@ -65,7 +65,7 @@ public class HttpUrlRequest {
 		for (String step : divideResponse) {
 			String[] divStep = step.split("=");
 			if (divStep.length > 1) {
-				responseMap.put(divStep[0], divStep[1]);//todo if not [1] data? then intead null
+				responseMap.put(divStep[0], divStep[1]);
 			} else {
 				responseMap.put(divStep[0], null);
 			}

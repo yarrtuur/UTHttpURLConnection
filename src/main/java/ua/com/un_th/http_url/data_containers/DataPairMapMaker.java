@@ -40,6 +40,11 @@ public class DataPairMapMaker {
 			sb.append("&zipCode").append("=").append(requestFields.getZipCode());
 			sb.append("&customerAccountCode").append("=").append(requestFields.getCustomerAccountCode());
 			sb.append("&transactionCode").append("=").append(requestFields.getTransactionCode());
+			sb.append("&accountData").append("=").append(requestFields.getAccountData());
+			sb.append("&csc").append("=").append(requestFields.getCsc());
+			sb.append("&splits").append("=").append(requestFields.getSplits());
+
+
 			String urlParameters = sb.toString();
 			HttpUrlRequest huc = new HttpUrlRequest();
 			Map<String, String> responseFields = huc.postRequest(postUrl, urlParameters);
