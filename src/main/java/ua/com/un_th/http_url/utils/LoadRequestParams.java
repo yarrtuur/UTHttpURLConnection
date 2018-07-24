@@ -1,18 +1,22 @@
 package ua.com.un_th.http_url.utils;
 
 import com.ebay.xcelite.Xcelite;
+import com.ebay.xcelite.annotations.AnyColumn;
+import com.ebay.xcelite.converters.CSVColumnValueConverter;
 import com.ebay.xcelite.reader.SheetReader;
 import com.ebay.xcelite.sheet.XceliteSheet;
 import ua.com.un_th.http_url.ExitException;
-import ua.com.un_th.http_url.data_containers.DataRequestNode;
 
 import java.io.File;
 import java.util.Collection;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class LoadRequestParams {
     private static final String CONFIG_REQUEST_DATA = "requestFile.xlsx";
     private ConnectionProperties connectionProperties;
-    private Collection<DataRequestNode> requestList;
+    @AnyColumn(converter = CSVColumnValueConverter.class, as = LinkedHashMap.class)
+    private Map<String, String> requestList;
 
     public LoadRequestParams() throws ExitException {
         connectionProperties = new ConnectionProperties();
@@ -25,14 +29,15 @@ public class LoadRequestParams {
         try {
             Xcelite xcelite = new Xcelite(new File(classloader.getResource(CONFIG_REQUEST_DATA).getFile()));
             XceliteSheet sheet = xcelite.getSheet("request");
-            SheetReader<DataRequestNode> reader = sheet.getBeanReader(DataRequestNode.class);
-            requestList = reader.read();
+            SheetReader<Collection<Object>> reader = sheet.getSimpleReader();
+            reader.skipHeaderRow(true);
+            requestList = (Map) reader.read();
         } catch (Exception e) {
             throw new ExitException("No file " + CONFIG_REQUEST_DATA + " found in " + e.getMessage());
         }
     }
 
-    public Collection<DataRequestNode> getRequestList() {
+    public Map<String, String> getRequestList() {
         return requestList;
     }
 
