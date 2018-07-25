@@ -13,14 +13,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class LoadRequestParams {
-
     private ConnectionProperties connectionProperties;
-
 
     public LoadRequestParams() throws ExitException {
         connectionProperties = new ConnectionProperties();
     }
-
 
     public String getUrlConnect() {
         return connectionProperties.getConnUrlConnect();
