@@ -1,7 +1,7 @@
 package ua.com.un_th.http_url;
 
 import ua.com.un_th.http_url.data_containers.RequestNode;
-import ua.com.un_th.http_url.data_containers.RequestReader;
+import ua.com.un_th.http_url.utils.RequestReader;
 
 import java.util.Collection;
 

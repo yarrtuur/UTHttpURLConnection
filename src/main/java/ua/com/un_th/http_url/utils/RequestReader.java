@@ -1,9 +1,10 @@
-package ua.com.un_th.http_url.data_containers;
+package ua.com.un_th.http_url.utils;
 
 import com.ebay.xcelite.Xcelite;
 import com.ebay.xcelite.reader.SheetReader;
 import com.ebay.xcelite.sheet.XceliteSheet;
 import ua.com.un_th.http_url.ExitException;
+import ua.com.un_th.http_url.data_containers.RequestNode;
 import ua.com.un_th.http_url.utils.LoadRequestParams;
 
 import java.io.File;
