@@ -14,6 +14,7 @@ public class Main {
             RequestDataReader requestDataReader = new RequestDataReader( "requestFile.xlsx");
             Collection<RequestNode> collectionRequests = requestDataReader.getRequestData();
             RequestHolder requestHolder = new RequestHolder(collectionRequests);
+            //requestHolder.sendRequest("amount", "5000");
         } catch (Exception ex) {
             ex.printStackTrace();
         }

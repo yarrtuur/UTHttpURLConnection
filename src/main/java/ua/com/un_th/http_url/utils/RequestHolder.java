@@ -1,6 +1,5 @@
 package ua.com.un_th.http_url.utils;
 
-import com.ebay.xcelite.column.Col;
 import ua.com.un_th.http_url.ExitException;
 import ua.com.un_th.http_url.data_containers.RequestNode;
 
@@ -9,19 +8,37 @@ import java.util.Collections;
 import java.util.Map;
 
 public class RequestHolder {
-    String userNameAndPasswd;
-    private LoadRequestParams loader;
+    private String userNameAndPasswd;
     private String postUrl;
-    private HttpUrlRequest httpUrlRequest;
+    private Collection<RequestNode> requestList;
+    private Map<String, Object> requestMap;
 
-    public RequestHolder(Collection<RequestNode> requestMap) throws ExitException {
-        this.loader = new LoadRequestParams();
+    public RequestHolder(Collection<RequestNode> requestList) throws ExitException {
+        LoadRequestParams loader = new LoadRequestParams();
         this.postUrl = loader.getUrlConnect();
         this.userNameAndPasswd = loader.getUserNameAndPasswd();
+        this.requestList = requestList;
     }
 
-    public Map<String, String>  sendRequest(Map<String, String> condition)  {
+    public Map<String, String> sendRequest(String key, String condition) throws ExitException {
+        for (RequestNode step : requestList) {
+            requestMap = step.getDynamicCols();
+            if (requestMap.get(key).equals(condition)) {
+                String urlParameters = makeUrlParameters();
+                HttpUrlRequest httpUrlRequest = new HttpUrlRequest();
+                return httpUrlRequest.postRequest(postUrl, urlParameters);
+            }
+        }
         return Collections.emptyMap();
+    }
+
+    private String makeUrlParameters() {
+        StringBuilder requestParams = new StringBuilder();
+        for (Map.Entry<String, Object> step : requestMap.entrySet()) {
+            requestParams.append(step.getKey()).append("=").append(step.getValue()).append("&");
+        }
+        requestParams.append(userNameAndPasswd);
+        return requestParams.toString();
     }
 
 }

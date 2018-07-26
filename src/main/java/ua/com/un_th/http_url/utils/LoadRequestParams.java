@@ -25,7 +25,7 @@ public class LoadRequestParams {
 
     public String getUserNameAndPasswd() {
         StringBuilder sb = new StringBuilder();
-        return sb.append("&userName=").append(connectionProperties.getConnUserName())
+        return sb.append("userName=").append(connectionProperties.getConnUserName())
                 .append("&password=").append(connectionProperties.getConnPasswd()).toString();
     }
 }

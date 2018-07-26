@@ -2,12 +2,17 @@ package ua.com.un_th.http_url.data_containers;
 
 import com.ebay.xcelite.annotations.AnyColumn;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class RequestNode {
-    @AnyColumn
+    @AnyColumn(as=LinkedHashMap.class)
     private Map<String, Object> dynamicCols;
+
+    public Map<String, Object> getDynamicCols() {
+        return dynamicCols;
+    }
 
     @Override
     public boolean equals(Object o) {
