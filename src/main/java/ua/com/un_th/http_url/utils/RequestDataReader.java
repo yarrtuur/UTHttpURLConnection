@@ -5,7 +5,6 @@ import com.ebay.xcelite.reader.SheetReader;
 import com.ebay.xcelite.sheet.XceliteSheet;
 import ua.com.un_th.http_url.ExitException;
 import ua.com.un_th.http_url.data_containers.RequestNode;
-import ua.com.un_th.http_url.utils.LoadRequestParams;
 
 import java.io.File;
 import java.util.Collection;
@@ -13,7 +12,7 @@ import java.util.Collection;
 public class RequestDataReader {
     private String configRequestData;
 
-    public RequestDataReader( String configRequestData ) {
+    public RequestDataReader(String configRequestData) {
         this.configRequestData = configRequestData;
     }
 

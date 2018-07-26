@@ -20,7 +20,7 @@ public class HttpUrlRequest {
             URL myUrl = new URL(postUrl);
             myUrlCon = (HttpURLConnection) myUrl.openConnection();
             setMyUrlConProperties(postDataLength);
-            System.out.println(String.format("Request sent: %s",urlParameters));
+            System.out.println(String.format("Request sent: %s", urlParameters));
             sendData(myUrlCon, postData);
             return receiveData(myUrlCon.getInputStream());
         } catch (IOException | ExitException ex) {
@@ -71,7 +71,7 @@ public class HttpUrlRequest {
                 responseMap.put(divStep[0], null);
             }
         }
-        System.out.println(String.format("Response received: %s",responseLine));
+        System.out.println(String.format("Response received: %s", responseLine));
         return responseMap;
     }
 

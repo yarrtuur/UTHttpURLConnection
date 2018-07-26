@@ -21,12 +21,12 @@ public class RequestHolderTest {
     }
 
     @Before
-    public void setBefore(){
+    public void setBefore() {
         System.out.println("Start test");
     }
 
     @After
-    public void setAfter(){
+    public void setAfter() {
         System.out.println("End test");
     }
 

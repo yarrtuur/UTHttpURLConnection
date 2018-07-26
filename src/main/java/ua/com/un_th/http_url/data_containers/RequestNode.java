@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class RequestNode {
-    @AnyColumn(as=LinkedHashMap.class)
+    @AnyColumn(as = LinkedHashMap.class)
     private Map<String, Object> dynamicCols;
 
     public Map<String, Object> getDynamicCols() {

@@ -6,12 +6,11 @@ import ua.com.un_th.http_url.utils.RequestHolder;
 
 import java.util.Collection;
 
-
 public class Main {
     public static void main(String[] args) {
         try {
 
-            RequestDataReader requestDataReader = new RequestDataReader( "requestFile.xlsx");
+            RequestDataReader requestDataReader = new RequestDataReader("requestFile.xlsx");
             Collection<RequestNode> collectionRequests = requestDataReader.getRequestData();
             RequestHolder requestHolder = new RequestHolder(collectionRequests);
         } catch (Exception ex) {
